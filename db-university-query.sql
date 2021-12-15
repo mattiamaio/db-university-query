@@ -76,4 +76,15 @@ INNER JOIN departments d2
 ON d.department_id = d2.id
 ORDER BY s.surname, s.name;
 
+-- Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
+
+SELECT s.surname, s.name, COUNT(es.exam_id) AS esami_svolti  
+FROM exam_student es  
+INNER JOIN students s 
+ON es.student_id = s.id 
+INNER JOIN exams e 
+ON es.exam_id = e.id 
+GROUP BY s.id 
+ORDER BY s.surname, s.name;
+
 
